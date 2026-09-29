@@ -2,7 +2,13 @@
 
 :root {
   --background: #050505;
-  --foreground: #e8d9a8;
+  --surface: #0b0b0c;
+  --surface-2: #111113;
+  --foreground: #f4f1ea;
+  --muted: #9a968d;
+  --faint: #5f5c56;
+  --line: rgba(212, 175, 55, 0.16);
+  --line-strong: #2a2a2a;
   --gold-light: #f5e3a3;
   --gold: #d4af37;
   --gold-deep: #8a6d1f;
@@ -10,15 +16,50 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-deep: var(--gold-deep);
   --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #fff;
+}
+
+/* ---------- Oro ---------- */
+
+.gold-gradient {
+  background: linear-gradient(
+    110deg,
+    var(--gold-deep) 0%,
+    var(--gold) 25%,
+    var(--gold-light) 50%,
+    var(--gold) 75%,
+    var(--gold-deep) 100%
+  );
+  background-size: 200% auto;
+}
+
+/* Solo para el "Coming Soon" del home. */
 .gold-text {
   background: linear-gradient(
     110deg,
@@ -42,14 +83,26 @@ body {
 .glow {
   background: radial-gradient(
     ellipse at center,
-    rgba(212, 175, 55, 0.12) 0%,
-    rgba(212, 175, 55, 0.04) 35%,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.03) 35%,
     transparent 70%
   );
 }
 
+/* Logo: el PNG blanco se usa como máscara y se rellena con el degradado dorado. */
+.logo-mask {
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
+}
+
+/* ---------- Movimiento ---------- */
+
 .fade-in {
-  animation: fade-in 1.6s ease-out both;
+  animation: fade-in 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.step-in {
+  animation: step-in 0.35s ease-out both;
 }
 
 @keyframes shimmer {
@@ -61,7 +114,18 @@ body {
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -71,7 +135,37 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .gold-text,
-  .fade-in {
+  .fade-in,
+  .step-in {
     animation: none;
   }
+}
+
+/* ---------- Slider de la calculadora ---------- */
+
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold) var(--pct), var(--line-strong) var(--pct));
+  outline: none;
+  cursor: pointer;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 2px solid var(--gold);
+}
+.range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 2px solid var(--gold);
+}
+.range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25);
 }
