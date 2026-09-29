@@ -102,9 +102,16 @@ export default function ApplicationForm() {
     }
   }
 
-  function next(e?: FormEvent) {
+  function next(e?: FormEvent<HTMLFormElement>) {
     e?.preventDefault();
     if (sending) return;
+    // "Siguiente" del teclado en un campo que no es el último: pasar al próximo campo.
+    const inputs = e ? [...e.currentTarget.querySelectorAll("input")] : [];
+    const at = inputs.indexOf(document.activeElement as HTMLInputElement);
+    if (at > -1 && at < inputs.length - 1 && !(e?.nativeEvent as SubmitEvent)?.submitter) {
+      inputs[at + 1].focus();
+      return;
+    }
     if (!stepValid(step)) return setTouched(true);
     if (i === STEPS.length - 1) return void submit();
     goTo(i + 1);
@@ -258,6 +265,7 @@ export default function ApplicationForm() {
                 onChange={(v) => set("npn", v.replace(/\D/g, "").slice(0, 10))}
                 inputMode="numeric"
                 autoComplete="off"
+                enterKeyHint="send"
                 error={showError(errors.npn)}
                 autoFocus
               />
@@ -277,8 +285,15 @@ export default function ApplicationForm() {
             </p>
           )}
 
-          {/* En preguntas de una sola opción se avanza al tocar; el botón queda para las demás. */}
-          <div className="mt-auto flex items-center gap-3 pt-12">
+          {/* Pasos de texto y selección múltiple llevan botón; los de una sola opción avanzan al tocar.
+              En la selección múltiple el botón queda fijo abajo porque la lista es larga. */}
+          <div
+            className={`flex items-center gap-3 ${
+              question?.multiple
+                ? "sticky bottom-0 -mx-5 mt-6 bg-gradient-to-t from-background from-70% to-transparent px-5 pb-5 pt-6"
+                : "mt-10"
+            }`}
+          >
             {i > 0 && (
               <button
                 type="button"
@@ -347,6 +362,7 @@ function Field({
     <label className="block">
       <span className="block text-[12px] font-medium uppercase tracking-[0.14em] text-muted">{label}</span>
       <input
+        enterKeyHint="next"
         {...rest}
         value={value}
         onChange={(e) => onChange(e.target.value)}
