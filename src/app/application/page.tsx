@@ -8,7 +8,7 @@ import VslPlayer from "./VslPlayer";
 export const metadata: Metadata = {
   title: "Visionary Elite | Para líderes de agencias de Life Insurance",
   description:
-    "Tú pones los agentes. Nosotros ponemos la data y la infraestructura para que cada agente de tu equipo esté en posición de cerrar 3 pólizas al día.",
+    "La fórmula: tus agentes + nuestro entrenamiento, leads y ventas = grandes resultados. Un sistema para que cada agente de tu equipo esté en posición de cerrar 3 pólizas al día.",
 };
 
 const STATS = [
@@ -57,7 +57,7 @@ const NOT_FIT = [
 const FAQ = [
   {
     q: "¿Esto es un curso o una mentoría?",
-    a: "No. No vendemos formación. Integramos tecnología, distribución de leads y organización directamente en la operación de tu agencia.",
+    a: "No. El entrenamiento a tus agentes es parte del sistema, no un producto aparte: junto con los leads y el proceso de ventas, lo integramos directamente en la operación de tu agencia.",
   },
   {
     q: "¿Qué tamaño debe tener mi agencia?",
@@ -86,6 +86,63 @@ const STEPS = [
   },
 ];
 
+// Operador de la ecuación: trazo fino, como en una fórmula escrita.
+function Op({ children }: { children: string }) {
+  return (
+    <span className="font-sans text-[2rem] font-extralight leading-none text-silver sm:text-5xl" aria-hidden>
+      {children}
+    </span>
+  );
+}
+
+// Rótulo casi imperceptible bajo cada lado de la ecuación. No mueve la alineación de los términos.
+function Caption({ children }: { children: string }) {
+  return (
+    <span className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-faint sm:text-[11px]">
+      {children}
+    </span>
+  );
+}
+
+// Agentes + [Entrenamiento · Leads · Ventas] = Grandes resultados
+function Formula() {
+  return (
+    <div
+      className="mt-9 flex flex-wrap items-center justify-center gap-x-4 gap-y-12 font-display text-[1.45rem] leading-tight sm:mt-12 sm:flex-nowrap sm:gap-x-7 sm:text-[2.1rem]"
+      role="math"
+      aria-label="Agentes más entrenamiento, leads y ventas es igual a grandes resultados"
+    >
+      <div className="flex items-center gap-4 sm:gap-7">
+        <span className="relative">
+          Agentes
+          <Caption>Tu trabajo</Caption>
+        </span>
+
+        <Op>+</Op>
+
+        {/* Los tres aportes agrupados entre corchetes, como un vector. */}
+        <span className="relative flex flex-col px-4 py-1.5 text-left leading-[1.25] sm:px-6">
+          <span className="absolute inset-y-0 left-0 w-2 border-y border-l border-white/35" aria-hidden />
+          <span className="absolute inset-y-0 right-0 w-2 border-y border-r border-white/35" aria-hidden />
+          <span>Entrenamiento</span>
+          <span>Leads</span>
+          <span>Ventas</span>
+          <Caption>Nuestro trabajo</Caption>
+        </span>
+      </div>
+
+      <div className="flex items-center gap-4 sm:gap-7">
+        <Op>=</Op>
+        <span className="text-left leading-[1.15]">
+          Grandes
+          <br />
+          resultados
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-silver">{children}</p>;
 }
@@ -102,24 +159,13 @@ export default function ApplicationLanding() {
         <div className="fade-in relative mx-auto flex max-w-3xl flex-col items-center text-center">
           <Logo className="w-28 sm:w-36" />
 
-          <div className="mt-9 sm:mt-11">
-            <Eyebrow>Solo para líderes de agencias</Eyebrow>
-          </div>
-
-          {/* La ecuación del video como titular. */}
-          <h1 className="mt-4 font-display text-[2.2rem] leading-[1.12] sm:text-6xl">
-            <span className="text-muted">Tus agentes</span>
-            <span className="block">
-              <span className="font-sans font-light text-silver">+ </span>
-              nuestra data e infraestructura
-            </span>
-            <span className="block">
-              <span className="font-sans font-light text-silver">= </span>
-              escala
-            </span>
+          <h1 className="mt-10 font-display text-[3.4rem] leading-none tracking-[-0.01em] sm:mt-12 sm:text-8xl">
+            La fórmula
           </h1>
 
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted sm:text-lg">
+          <Formula />
+
+          <p className="mt-14 max-w-xl text-[15px] leading-relaxed text-muted sm:mt-16 sm:text-lg">
             Un sistema diseñado para poner a cada agente de tu equipo en posición de cerrar{" "}
             <span className="font-medium text-foreground">3 pólizas al día</span>.
           </p>
@@ -132,7 +178,6 @@ export default function ApplicationLanding() {
             <VslPlayer />
             <div className="pointer-events-none absolute inset-x-0 top-0 aspect-video border border-white/15" />
           </div>
-          <p className="mt-4 text-center text-[12px] text-muted">Mira el video completo · 2 min</p>
         </div>
       </section>
 

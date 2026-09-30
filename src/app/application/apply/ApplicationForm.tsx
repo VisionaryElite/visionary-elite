@@ -1,9 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import Logo from "@/components/Logo";
 import { readTracking } from "@/components/TrackingCapture";
+import { pushEvent, pushEventThenGo } from "@/lib/tracking";
 import {
   CHOICE_QUESTIONS,
   EMAIL_RE,
@@ -33,13 +33,13 @@ const EMPTY: ApplicationAnswers = {
 };
 
 export default function ApplicationForm() {
-  const router = useRouter();
   const [a, setA] = useState<ApplicationAnswers>(EMPTY);
   const [i, setI] = useState(0);
   const [touched, setTouched] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const furthestTracked = useRef(-1);
 
   const step = STEPS[i];
   const question = CHOICE_QUESTIONS.find((q) => q.id === step);
@@ -54,6 +54,19 @@ export default function ApplicationForm() {
   useEffect(() => () => {
     if (advanceTimer.current) clearTimeout(advanceTimer.current);
   }, []);
+
+  // ViewContent la primera vez que el usuario llega a cada paso (al retroceder no se repite).
+  useEffect(() => {
+    if (i <= furthestTracked.current) return;
+    furthestTracked.current = i;
+    pushEvent({
+      event: "ViewContent",
+      funnel: "application",
+      step_number: i + 1,
+      step_name: STEPS[i],
+      total_steps: STEPS.length,
+    });
+  }, [i]);
 
   const set = <K extends keyof ApplicationAnswers>(k: K, v: ApplicationAnswers[K]) =>
     setA((prev) => ({ ...prev, [k]: v }));
@@ -95,7 +108,16 @@ export default function ApplicationForm() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error || "error");
-      router.push(data.qualified ? "/application/thank-you" : "/application/received");
+      // Lead en cada aplicación enviada; lead_qualified permite filtrar en GTM.
+      pushEventThenGo(
+        {
+          event: "Lead",
+          funnel: "application",
+          lead_qualified: Boolean(data.qualified),
+          qualification_status: data.qualified ? "califica" : "no_califica",
+        },
+        data.qualified ? "/application/thank-you" : "/application/received",
+      );
     } catch {
       setSending(false);
       setError("No pudimos enviar tu aplicación. Revisa tu conexión e inténtalo de nuevo.");
