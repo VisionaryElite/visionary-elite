@@ -274,7 +274,15 @@ export default function ApplicationForm() {
               </p>
               <p className="mt-10 text-[12px] leading-relaxed text-faint">
                 Al enviar tu aplicación aceptas que Visionary Elite te contacte por teléfono, SMS o correo
-                electrónico sobre esta aplicación.
+                electrónico sobre esta aplicación, y aceptas nuestros{" "}
+                <a href="/terms-of-service" target="_blank" className="underline underline-offset-2 hover:text-muted">
+                  Términos del servicio
+                </a>{" "}
+                y nuestra{" "}
+                <a href="/privacy-policy" target="_blank" className="underline underline-offset-2 hover:text-muted">
+                  Política de privacidad
+                </a>
+                . Pueden aplicar tarifas de mensajes y datos; responde STOP para dejar de recibir SMS.
               </p>
             </Step>
           )}

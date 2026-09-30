@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Logo from "@/components/Logo";
 import TrackingCapture from "@/components/TrackingCapture";
 import ProductionCalculator from "./ProductionCalculator";
@@ -354,6 +355,14 @@ export default function ApplicationLanding() {
       </section>
 
       <footer className="border-t border-line px-4 py-8 text-center text-[11px] tracking-wide text-muted/70">
+        <nav className="mb-3 flex justify-center gap-6 text-[12px]">
+          <Link href="/privacy-policy" className="hover:text-foreground">
+            Política de privacidad
+          </Link>
+          <Link href="/terms-of-service" className="hover:text-foreground">
+            Términos del servicio
+          </Link>
+        </nav>
         © {new Date().getFullYear()} Visionary Elite. Todos los derechos reservados.
       </footer>
     </div>
