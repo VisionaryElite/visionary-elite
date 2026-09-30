@@ -125,8 +125,11 @@ export default function ApplicationLanding() {
         </div>
 
         <div className="fade-in relative mx-auto mt-8 max-w-3xl [animation-delay:150ms] sm:mt-10">
-          <div className="overflow-hidden rounded-lg border border-white/15 bg-black shadow-[0_24px_80px_-40px_rgba(0,0,0,0.9)]">
+          {/* vturb pinta el botón del CTA debajo del video, dentro del mismo reproductor.
+              El marco se dibuja solo sobre el área 16:9 para que el botón quede fuera, sobre el fondo. */}
+          <div className="relative">
             <VslPlayer />
+            <div className="pointer-events-none absolute inset-x-0 top-0 aspect-video border border-white/15" />
           </div>
           <p className="mt-4 text-center text-[12px] text-muted">Mira el video completo · 2 min</p>
         </div>
