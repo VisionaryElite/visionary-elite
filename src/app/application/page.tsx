@@ -89,7 +89,7 @@ const STEPS = [
 // Operador de la ecuación: trazo fino, como en una fórmula escrita.
 function Op({ children }: { children: string }) {
   return (
-    <span className="font-sans text-[2rem] font-extralight leading-none text-silver sm:text-5xl" aria-hidden>
+    <span className="font-sans text-[clamp(1.6rem,7.5vw,3rem)] font-extralight leading-none text-silver" aria-hidden>
       {children}
     </span>
   );
@@ -98,7 +98,7 @@ function Op({ children }: { children: string }) {
 // Rótulo casi imperceptible bajo cada lado de la ecuación. No mueve la alineación de los términos.
 function Caption({ children }: { children: string }) {
   return (
-    <span className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-faint sm:text-[11px]">
+    <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 sm:mt-3 whitespace-nowrap font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-faint sm:text-[11px]">
       {children}
     </span>
   );
@@ -108,11 +108,11 @@ function Caption({ children }: { children: string }) {
 function Formula() {
   return (
     <div
-      className="mt-9 flex flex-wrap items-center justify-center gap-x-4 gap-y-12 font-display text-[1.45rem] leading-tight sm:mt-12 sm:flex-nowrap sm:gap-x-7 sm:text-[2.1rem]"
+      className="mt-6 flex flex-wrap items-center justify-center gap-x-[clamp(0.75rem,3.5vw,1.75rem)] gap-y-9 font-display text-[clamp(1.2rem,5.6vw,2.1rem)] leading-tight sm:mt-12 sm:flex-nowrap sm:gap-y-12"
       role="math"
       aria-label="Agentes más entrenamiento, leads y ventas es igual a grandes resultados"
     >
-      <div className="flex items-center gap-4 sm:gap-7">
+      <div className="flex items-center gap-[clamp(0.75rem,3.5vw,1.75rem)]">
         <span className="relative">
           Agentes
           <Caption>Tu trabajo</Caption>
@@ -121,7 +121,7 @@ function Formula() {
         <Op>+</Op>
 
         {/* Los tres aportes agrupados entre corchetes, como un vector. */}
-        <span className="relative flex flex-col px-4 py-1.5 text-left leading-[1.25] sm:px-6">
+        <span className="relative flex flex-col px-[clamp(0.85rem,3.5vw,1.5rem)] py-1 text-left leading-[1.22] sm:py-1.5">
           <span className="absolute inset-y-0 left-0 w-2 border-y border-l border-white/35" aria-hidden />
           <span className="absolute inset-y-0 right-0 w-2 border-y border-r border-white/35" aria-hidden />
           <span>Entrenamiento</span>
@@ -131,7 +131,7 @@ function Formula() {
         </span>
       </div>
 
-      <div className="flex items-center gap-4 sm:gap-7">
+      <div className="flex items-center gap-[clamp(0.75rem,3.5vw,1.75rem)]">
         <Op>=</Op>
         <span className="text-left leading-[1.15]">
           Grandes
@@ -153,30 +153,30 @@ export default function ApplicationLanding() {
       <TrackingCapture />
 
       {/* ---------- Hero + VSL ---------- */}
-      <section className="relative px-4 pb-16 pt-8 sm:pt-12">
+      <section className="relative px-4 pb-16 pt-5 sm:pt-12">
         <div className="glow pointer-events-none absolute left-1/2 top-40 h-[80vmin] w-[160vmin] -translate-x-1/2" />
 
         <div className="fade-in relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <Logo className="w-28 sm:w-36" />
+          <Logo className="w-[clamp(5rem,22vw,9rem)]" />
 
-          <h1 className="mt-10 font-display text-[3.4rem] leading-none tracking-[-0.01em] sm:mt-12 sm:text-8xl">
-            La fórmula
+          <h1 className="mt-6 font-display text-[clamp(2.6rem,12.5vw,6rem)] leading-none tracking-[-0.01em] sm:mt-12">
+            La Fórmula
           </h1>
 
           <Formula />
 
-          <p className="mt-14 max-w-xl text-[15px] leading-relaxed text-muted sm:mt-16 sm:text-lg">
+          <p className="mt-9 max-w-xl text-[14px] leading-relaxed text-muted sm:mt-16 sm:text-lg">
             Un sistema diseñado para poner a cada agente de tu equipo en posición de cerrar{" "}
             <span className="font-medium text-foreground">hasta 3 pólizas al día</span>.
           </p>
         </div>
 
-        <div className="fade-in relative mx-auto mt-8 max-w-3xl [animation-delay:150ms] sm:mt-10">
+        <div className="fade-in relative -mx-4 mt-5 max-w-3xl [animation-delay:150ms] sm:mx-auto sm:mt-10">
           {/* vturb pinta el botón del CTA debajo del video, dentro del mismo reproductor.
               El marco se dibuja solo sobre el área 16:9 para que el botón quede fuera, sobre el fondo. */}
           <div className="relative">
             <VslPlayer />
-            <div className="pointer-events-none absolute inset-x-0 top-0 aspect-video border border-white/15" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 aspect-video border-y border-white/15 sm:border" />
           </div>
         </div>
       </section>
