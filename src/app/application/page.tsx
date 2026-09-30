@@ -8,7 +8,7 @@ import VslPlayer from "./VslPlayer";
 export const metadata: Metadata = {
   title: "Visionary Elite | Para líderes de agencias de Life Insurance",
   description:
-    "La fórmula: tus agentes + nuestro entrenamiento, leads y ventas = grandes resultados. Un sistema para que cada agente de tu equipo esté en posición de cerrar 3 pólizas al día.",
+    "La fórmula: tus agentes + nuestro entrenamiento, leads y ventas = grandes resultados. Un sistema para que cada agente de tu equipo esté en posición de cerrar hasta 3 pólizas al día.",
 };
 
 const STATS = [
@@ -167,7 +167,7 @@ export default function ApplicationLanding() {
 
           <p className="mt-14 max-w-xl text-[15px] leading-relaxed text-muted sm:mt-16 sm:text-lg">
             Un sistema diseñado para poner a cada agente de tu equipo en posición de cerrar{" "}
-            <span className="font-medium text-foreground">3 pólizas al día</span>.
+            <span className="font-medium text-foreground">hasta 3 pólizas al día</span>.
           </p>
         </div>
 
@@ -284,7 +284,7 @@ export default function ApplicationLanding() {
           <div className="mx-auto max-w-2xl text-center">
             <Eyebrow>Haz el cálculo</Eyebrow>
             <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-              ¿Qué produce tu agencia si cada agente cierra <span className="text-muted">3 al día</span>?
+              ¿Qué produce tu agencia si cada agente cierra <span className="text-muted">hasta 3 al día</span>?
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted">
               Mueve los valores con los números reales de tu equipo.

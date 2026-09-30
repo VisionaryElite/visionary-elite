@@ -85,8 +85,8 @@ export default function ProductionCalculator() {
       </div>
 
       <div className="flex flex-col justify-center border-t border-line-strong bg-black p-6 text-center sm:p-8 md:border-l md:border-t-0">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Producción mensual potencial</p>
-        <p className="mt-4 font-display text-6xl leading-none text-gold sm:text-7xl">{compact(production)}</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-silver">Producción mensual potencial</p>
+        <p className="mt-4 font-display text-6xl leading-none text-foreground sm:text-7xl">{compact(production)}</p>
         <p className="mt-3 text-sm text-muted">en prima anualizada</p>
 
         <div className="mx-auto mt-8 grid w-full max-w-xs grid-cols-2 divide-x divide-line-strong border-y border-line-strong py-4">

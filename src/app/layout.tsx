@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: "Coming soon.",
   // Verificación del dominio en Meta Business.
   verification: {
-    other: { "facebook-domain-verification": "j2327tey8amod2uqwza4cdvlkgfi4c" },
+    other: { "facebook-domain-verification": "1pqfldtgmgk6whzux6ytvxcigagmfq" },
   },
 };
 
