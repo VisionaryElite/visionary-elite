@@ -105,10 +105,17 @@ export default function ApplicationLanding() {
             <Eyebrow>Solo para líderes de agencias</Eyebrow>
           </div>
 
-          <h1 className="mt-4 font-display text-[2.2rem] leading-[1.08] sm:text-6xl">
-            <span className="text-muted">Tú pones los agentes.</span>
-            <br />
-            Nosotros, la data y la infraestructura.
+          {/* La ecuación del video como titular. */}
+          <h1 className="mt-4 font-display text-[2.2rem] leading-[1.12] sm:text-6xl">
+            <span className="text-muted">Tus agentes</span>
+            <span className="block">
+              <span className="font-sans font-light text-silver">+ </span>
+              nuestra data e infraestructura
+            </span>
+            <span className="block">
+              <span className="font-sans font-light text-silver">= </span>
+              escala
+            </span>
           </h1>
 
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted sm:text-lg">
