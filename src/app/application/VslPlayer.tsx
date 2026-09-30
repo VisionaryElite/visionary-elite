@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 
-const PLAYER_ID = "vid-6ababfe277ab3553dc56b8be";
+const PLAYER_ID = "vid-6abd1bfe1a594cec43c9171c";
 const PLAYER_SRC =
-  "https://scripts.converteai.net/64213409-df9a-44fb-a16e-2c3d7b1c97be/players/6ababfe277ab3553dc56b8be/v4/player.js";
+  "https://scripts.converteai.net/64213409-df9a-44fb-a16e-2c3d7b1c97be/players/6abd1bfe1a594cec43c9171c/v4/player.js";
 
 // Embed de vturb. El botón de CTA vive dentro del reproductor (se configura en vturb).
 export default function VslPlayer() {
