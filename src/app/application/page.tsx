@@ -89,7 +89,7 @@ const STEPS = [
 // Operador de la ecuación: trazo fino, como en una fórmula escrita.
 function Op({ children }: { children: string }) {
   return (
-    <span className="font-sans text-[clamp(1.6rem,7.5vw,3rem)] font-extralight leading-none text-silver" aria-hidden>
+    <span className="font-sans text-[1.45em] font-extralight leading-none text-silver" aria-hidden>
       {children}
     </span>
   );
@@ -98,7 +98,7 @@ function Op({ children }: { children: string }) {
 // Rótulo casi imperceptible bajo cada lado de la ecuación. No mueve la alineación de los términos.
 function Caption({ children }: { children: string }) {
   return (
-    <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 sm:mt-3 whitespace-nowrap font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-faint sm:text-[11px]">
+    <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 sm:mt-3 whitespace-nowrap font-sans text-[9px] font-medium uppercase tracking-[0.18em] text-faint sm:text-[11px]">
       {children}
     </span>
   );
@@ -108,11 +108,11 @@ function Caption({ children }: { children: string }) {
 function Formula() {
   return (
     <div
-      className="mt-6 flex flex-wrap items-center justify-center gap-x-[clamp(0.75rem,3.5vw,1.75rem)] gap-y-9 font-display text-[clamp(1.2rem,5.6vw,2.1rem)] leading-tight sm:mt-12 sm:flex-nowrap sm:gap-y-12"
+      className="mt-7 flex flex-nowrap items-center justify-center gap-x-[0.8em] whitespace-nowrap pb-7 font-display text-[clamp(0.8rem,3.9vw,2.1rem)] leading-tight sm:mt-12 sm:pb-8"
       role="math"
       aria-label="Agentes más entrenamiento, leads y ventas es igual a grandes resultados"
     >
-      <div className="flex items-center gap-[clamp(0.75rem,3.5vw,1.75rem)]">
+      <div className="flex items-center gap-x-[0.8em]">
         <span className="relative">
           Agentes
           <Caption>Tu trabajo</Caption>
@@ -121,9 +121,9 @@ function Formula() {
         <Op>+</Op>
 
         {/* Los tres aportes agrupados entre corchetes, como un vector. */}
-        <span className="relative flex flex-col px-[clamp(0.85rem,3.5vw,1.5rem)] py-1 text-left leading-[1.22] sm:py-1.5">
-          <span className="absolute inset-y-0 left-0 w-2 border-y border-l border-white/35" aria-hidden />
-          <span className="absolute inset-y-0 right-0 w-2 border-y border-r border-white/35" aria-hidden />
+        <span className="relative flex flex-col px-[0.7em] py-[0.2em] text-left leading-[1.22]">
+          <span className="absolute inset-y-0 left-0 w-[0.3em] border-y border-l border-white/35" aria-hidden />
+          <span className="absolute inset-y-0 right-0 w-[0.3em] border-y border-r border-white/35" aria-hidden />
           <span>Entrenamiento</span>
           <span>Leads</span>
           <span>Ventas</span>
@@ -131,7 +131,7 @@ function Formula() {
         </span>
       </div>
 
-      <div className="flex items-center gap-[clamp(0.75rem,3.5vw,1.75rem)]">
+      <div className="flex items-center gap-x-[0.8em]">
         <Op>=</Op>
         <span className="text-left leading-[1.15]">
           Grandes
