@@ -137,7 +137,7 @@ export default function ApplicationForm() {
       {/* Encabezado + progreso por segmentos */}
       <header className="mx-auto w-full max-w-xl px-5 pt-5">
         <div className="flex items-center justify-between">
-          <Logo className="w-[76px] text-gold" />
+          <Logo className="w-[76px]" />
           <span className="text-[13px] font-medium tabular-nums text-muted">
             <span className="text-foreground">{String(i + 1).padStart(2, "0")}</span> / {STEPS.length}
           </span>
@@ -146,7 +146,7 @@ export default function ApplicationForm() {
           {STEPS.map((s, n) => (
             <span
               key={s}
-              className={`h-[3px] flex-1 transition-colors duration-300 ${n <= i ? "bg-gold" : "bg-line-strong"}`}
+              className={`h-[3px] flex-1 transition-colors duration-300 ${n <= i ? "bg-foreground" : "bg-line-strong"}`}
             />
           ))}
         </div>
@@ -187,14 +187,14 @@ export default function ApplicationForm() {
                     >
                       <span
                         className={`flex h-7 w-7 shrink-0 items-center justify-center border text-[11px] font-semibold transition-colors ${
-                          selected ? "border-gold bg-gold text-black" : "border-line-strong text-muted"
+                          selected ? "border-foreground bg-foreground text-black" : "border-line-strong text-muted"
                         }`}
                       >
                         {String.fromCharCode(65 + n)}
                       </span>
                       <span className="flex-1">{o.label}</span>
                       {selected && (
-                        <svg viewBox="0 0 20 20" className="h-4 w-4 text-gold" aria-hidden>
+                        <svg viewBox="0 0 20 20" className="h-4 w-4 text-foreground" aria-hidden>
                           <path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" strokeWidth="1.8" />
                         </svg>
                       )}
@@ -269,7 +269,7 @@ export default function ApplicationForm() {
                 error={showError(errors.npn)}
                 autoFocus
               />
-              <p className="mt-4 border-l-2 border-gold pl-3 text-[13px] leading-snug text-foreground/90">
+              <p className="mt-4 border-l-2 border-silver pl-3 text-[13px] leading-snug text-foreground/90">
                 Si tu NPN no coincide con tu nombre, no serás contactado.
               </p>
               <p className="mt-10 text-[12px] leading-relaxed text-faint">
@@ -310,7 +310,7 @@ export default function ApplicationForm() {
               <button
                 type="submit"
                 disabled={sending}
-                className="flex h-[52px] flex-1 items-center justify-between bg-gold px-5 text-[14px] font-semibold text-black transition hover:bg-[#d6b264] active:translate-y-px disabled:opacity-60"
+                className="flex h-[52px] flex-1 items-center justify-between bg-foreground px-5 text-[14px] font-semibold text-black transition hover:bg-white active:translate-y-px disabled:opacity-60"
               >
                 <span>{step === "npn" ? (sending ? "Enviando…" : "Enviar aplicación") : "Continuar"}</span>
                 <svg viewBox="0 0 20 20" className="h-4 w-4" aria-hidden>
@@ -338,7 +338,7 @@ function Step({
 }) {
   return (
     <div>
-      <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-gold">{eyebrow}</p>
+      <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-silver">{eyebrow}</p>
       <h1 className="mt-3 font-display text-[1.95rem] leading-[1.12] sm:text-[2.5rem]">{title}</h1>
       {hint && <p className="mt-3 text-sm text-muted">{hint}</p>}
       <div className="mt-9">{children}</div>
@@ -367,7 +367,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         aria-invalid={Boolean(error)}
-        className={`w-full border-b bg-transparent pb-3 pt-2 text-[20px] text-foreground outline-none transition-colors placeholder:text-faint focus:border-gold ${
+        className={`w-full border-b bg-transparent pb-3 pt-2 text-[20px] text-foreground outline-none transition-colors placeholder:text-faint focus:border-foreground ${
           error ? "border-red-500" : "border-line-strong"
         }`}
       />

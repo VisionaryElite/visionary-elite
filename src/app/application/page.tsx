@@ -86,7 +86,7 @@ const STEPS = [
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">{children}</p>;
+  return <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-silver">{children}</p>;
 }
 
 export default function ApplicationLanding() {
@@ -106,9 +106,9 @@ export default function ApplicationLanding() {
           </div>
 
           <h1 className="mt-4 font-display text-[2.2rem] leading-[1.08] sm:text-6xl">
-            Tú pones los agentes.
+            <span className="text-muted">Tú pones los agentes.</span>
             <br />
-            <span className="text-gold">Nosotros, la data y la infraestructura.</span>
+            Nosotros, la data y la infraestructura.
           </h1>
 
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted sm:text-lg">
@@ -118,7 +118,7 @@ export default function ApplicationLanding() {
         </div>
 
         <div className="fade-in relative mx-auto mt-8 max-w-3xl [animation-delay:150ms] sm:mt-10">
-          <div className="overflow-hidden rounded-lg border border-gold/25 bg-black shadow-[0_24px_80px_-40px_rgba(0,0,0,0.9)]">
+          <div className="overflow-hidden rounded-lg border border-white/15 bg-black shadow-[0_24px_80px_-40px_rgba(0,0,0,0.9)]">
             <VslPlayer />
           </div>
           <p className="mt-4 text-center text-[12px] text-muted">Mira el video completo · 2 min</p>
@@ -134,7 +134,7 @@ export default function ApplicationLanding() {
               className={`px-3 text-center ${i % 2 === 1 ? "border-l border-line" : ""} ${i === 2 ? "lg:border-l" : ""}`}
             >
               <p className="font-display text-5xl leading-none">
-                <span className="text-gold">{s.value}</span>
+                <span className="text-foreground">{s.value}</span>
                 <span className="ml-1 text-base text-muted">{s.unit}</span>
               </p>
               <p className="mx-auto mt-3 max-w-[15rem] text-[13px] leading-snug text-muted">{s.label}</p>
@@ -148,8 +148,8 @@ export default function ApplicationLanding() {
         <div className="mx-auto max-w-2xl text-center">
           <Eyebrow>El verdadero problema</Eyebrow>
           <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-            El cuello de botella de tu agencia no es el talento.
-            <span className="mt-2 block font-normal text-gold">Es la falta de predictibilidad.</span>
+            <span className="text-muted">El cuello de botella de tu agencia no es el talento.</span>
+            <span className="mt-2 block">Es la falta de predictibilidad.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-muted sm:text-base">
             Tus agentes saben cerrar. Lo que frena el crecimiento es no saber cuántas oportunidades reales van a
@@ -165,7 +165,7 @@ export default function ApplicationLanding() {
           <div className="text-center">
             <Eyebrow>La diferencia</Eyebrow>
             <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-              Comprar leads <span className="text-gold">no es</span> tener un sistema
+              Comprar leads <span className="text-muted">no es</span> tener un sistema
             </h2>
           </div>
 
@@ -173,7 +173,7 @@ export default function ApplicationLanding() {
             <div className="hidden grid-cols-[1fr_1.3fr_1.3fr] border-b border-line-strong bg-surface-2 text-[11px] font-semibold uppercase tracking-[0.2em] md:grid">
               <span className="px-6 py-4 text-muted">&nbsp;</span>
               <span className="px-6 py-4 text-muted">Modelo tradicional</span>
-              <span className="px-6 py-4 text-gold">Con Visionary Elite</span>
+              <span className="px-6 py-4 text-foreground">Con Visionary Elite</span>
             </div>
             {COMPARISON.map((c) => (
               <div
@@ -188,7 +188,7 @@ export default function ApplicationLanding() {
                   {c.before}
                 </p>
                 <p className="flex gap-3 px-5 pb-5 pt-2 text-[14px] leading-snug md:px-6 md:py-5">
-                  <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden>
+                  <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 text-silver" aria-hidden>
                     <path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" strokeWidth="2" />
                   </svg>
                   {c.after}
@@ -211,7 +211,7 @@ export default function ApplicationLanding() {
             {PILLARS.map((p, i) => (
               <article key={p.title} className="rounded-lg border border-line-strong bg-surface-2 p-6 sm:p-7">
                 <div className="flex items-center justify-between">
-                  <span className="h-0.5 w-8 bg-gold" />
+                  <span className="h-0.5 w-8 bg-silver/70" />
                   <span className="text-[12px] font-medium tabular-nums text-faint">0{i + 1}</span>
                 </div>
                 <h3 className="mt-5 font-display text-[1.7rem] leading-tight">{p.title}</h3>
@@ -228,7 +228,7 @@ export default function ApplicationLanding() {
           <div className="mx-auto max-w-2xl text-center">
             <Eyebrow>Haz el cálculo</Eyebrow>
             <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-              ¿Qué produce tu agencia si cada agente cierra <span className="text-gold">3 al día</span>?
+              ¿Qué produce tu agencia si cada agente cierra <span className="text-muted">3 al día</span>?
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted">
               Mueve los valores con los números reales de tu equipo.
@@ -246,18 +246,21 @@ export default function ApplicationLanding() {
           <div className="text-center md:text-left">
             <Eyebrow>A quién buscamos</Eyebrow>
             <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-              Líderes de agencia que ya tienen <span className="text-gold">estructura</span>
+              <span className="text-muted">Líderes de agencia que ya tienen</span> estructura
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted">
               Esto no se soluciona con un mensaje ni con una llamada de cinco minutos. Trabajamos con pocas
               agencias, a fondo, para capturar juntos la cuota de mercado que nos corresponde.
+            </p>
+            <p className="mt-7 font-display text-2xl leading-snug sm:text-3xl">
+              <span className="text-muted">No buscamos cantidad,</span> sino calidad.
             </p>
           </div>
 
           <ul className="divide-y divide-line-strong border-y border-line-strong">
             {FIT.map((f) => (
               <li key={f} className="flex items-start gap-4 py-4">
-                <svg viewBox="0 0 20 20" className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden>
+                <svg viewBox="0 0 20 20" className="mt-0.5 h-5 w-5 shrink-0 text-silver" aria-hidden>
                   <path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" strokeWidth="1.8" />
                 </svg>
                 <span className="text-[15px] leading-snug">{f}</span>
@@ -292,7 +295,7 @@ export default function ApplicationLanding() {
           <ol className="relative mt-12 space-y-10 before:absolute before:bottom-6 before:left-[19px] before:top-6 before:w-px before:bg-line-strong">
             {STEPS.map((s, i) => (
               <li key={s.title} className="relative flex gap-6">
-                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-background text-sm font-semibold text-gold">
+                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-background text-sm font-semibold text-foreground">
                   {i + 1}
                 </span>
                 <div className="pt-1.5">
@@ -317,7 +320,7 @@ export default function ApplicationLanding() {
               <details key={f.q} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[16px] font-medium [&::-webkit-details-marker]:hidden">
                   {f.q}
-                  <span className="text-xl leading-none text-gold transition-transform group-open:rotate-45" aria-hidden>
+                  <span className="text-xl leading-none text-silver transition-transform group-open:rotate-45" aria-hidden>
                     +
                   </span>
                 </summary>
@@ -331,12 +334,12 @@ export default function ApplicationLanding() {
       {/* ---------- Cierre ---------- */}
       <section className="relative px-4 pb-20 pt-4 sm:pb-28">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="mx-auto block h-px w-16 bg-gold/60" />
+          <span className="mx-auto block h-px w-16 bg-white/30" />
           <p className="mt-10 font-display text-3xl italic leading-snug sm:text-4xl">
             &ldquo;Mi objetivo es integrar mi tecnología, mi sistema de distribución y mi organización directamente
             en tu oficina.&rdquo;
           </p>
-          <Logo variant="monogram" className="mx-auto mt-10 w-12" />
+          <Logo variant="monogram" className="mx-auto mt-10 w-12 text-muted" />
         </div>
       </section>
 

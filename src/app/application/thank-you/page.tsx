@@ -13,7 +13,7 @@ export default function ThankYouQualified() {
       eyebrow="Aplicación recibida"
       title={
         <>
-          Tu agencia <span className="text-gold">califica</span> para el siguiente paso
+          <span className="text-muted">Tu agencia</span> califica <span className="text-muted">para el siguiente paso</span>
         </>
       }
     >

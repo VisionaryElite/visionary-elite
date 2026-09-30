@@ -13,12 +13,12 @@ export default function ThankYou({
   return (
     <div className="flex min-h-dvh flex-1 flex-col">
       <header className="mx-auto w-full max-w-xl px-5 py-5">
-        <Logo className="w-[84px] text-gold" />
+        <Logo className="w-[84px]" />
       </header>
 
       <main className="step-in mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-5 pb-24">
         <div className="flex items-center gap-3">
-          <span className="h-1.5 w-1.5 bg-gold" />
+          <span className="h-1.5 w-1.5 bg-silver" />
           <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted">{eyebrow}</p>
         </div>
         <h1 className="mt-5 font-display text-[2.4rem] leading-[1.08] sm:text-5xl">{title}</h1>

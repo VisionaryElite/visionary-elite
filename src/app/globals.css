@@ -5,9 +5,10 @@
   --surface: #0b0b0c;
   --surface-2: #111113;
   --foreground: #f4f1ea;
-  --muted: #9a968d;
-  --faint: #5f5c56;
-  --line: rgba(212, 175, 55, 0.16);
+  --muted: #8e929a;
+  --faint: #5c6068;
+  --silver: #c3c7ce;
+  --line: rgba(255, 255, 255, 0.08);
   --line-strong: #2a2a2a;
   --gold-light: #f5e3a3;
   --gold: #d4af37;
@@ -21,6 +22,7 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
+  --color-silver: var(--silver);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
   --color-gold: var(--gold);
@@ -41,7 +43,7 @@ body {
 }
 
 ::selection {
-  background: rgba(212, 175, 55, 0.35);
+  background: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
 
@@ -59,15 +61,15 @@ body {
   background-size: 200% auto;
 }
 
-/* Solo para el "Coming Soon" del home. */
-.gold-text {
+/* Solo para el "Coming Soon" del home (plata). */
+.silver-text {
   background: linear-gradient(
     110deg,
-    var(--gold-deep) 0%,
-    var(--gold) 25%,
-    var(--gold-light) 50%,
-    var(--gold) 75%,
-    var(--gold-deep) 100%
+    #6b6f76 0%,
+    #c3c7ce 25%,
+    #ffffff 50%,
+    #c3c7ce 75%,
+    #6b6f76 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -76,21 +78,22 @@ body {
   animation: shimmer 8s linear infinite;
 }
 
-.gold-line {
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+.silver-line {
+  background: linear-gradient(90deg, transparent, var(--silver), transparent);
 }
 
 .glow {
   background: radial-gradient(
     ellipse at center,
-    rgba(212, 175, 55, 0.1) 0%,
-    rgba(212, 175, 55, 0.03) 35%,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 35%,
     transparent 70%
   );
 }
 
-/* Logo: el PNG blanco se usa como máscara y se rellena con el degradado dorado. */
+/* Logo: el PNG blanco se usa como máscara y se rellena con el color del texto. */
 .logo-mask {
+  background-color: currentColor;
   -webkit-mask: var(--logo) center / contain no-repeat;
   mask: var(--logo) center / contain no-repeat;
 }
@@ -134,7 +137,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gold-text,
+  .silver-text,
   .fade-in,
   .step-in {
     animation: none;
